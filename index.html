@@ -1,0 +1,2288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Física y el Universo en Movimiento</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{ color:#fff; overflow-x:hidden; }
+
+header{
+position:fixed;
+width:100%;
+top:0;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(12px);
+padding:18px 30px; 
+z-index:1000;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav ul{
+display:flex;
+gap:25px; 
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:18px;  
+font-weight:600;
+padding:8px 12px;
+border-radius:8px;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00d4ff;
+background:rgba(0,212,255,0.1);
+text-shadow:0 0 8px rgba(0,212,255,0.7);
+}
+
+.imgCard{
+width:calc(100% + 40px);
+height:220px;
+
+object-fit:contain; 
+object-position:center;
+
+margin:-25px -25px 10px -25px;
+border-radius:20px 20px 0 0;
+
+background:black; 
+}
+
+.pagina{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px 40px 20px;
+}
+
+#tituloSub{
+font-size:3em;
+font-weight:800;
+letter-spacing:2px;
+
+background:linear-gradient(90deg,#00d4ff,#00ffcc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+margin-bottom:30px;
+text-align:center;
+}
+
+.bloque h2{
+font-size:1.6em;
+margin-bottom:10px;
+color:#00ffcc;
+
+text-shadow:0 0 8px rgba(0,255,204,0.6);
+border-left:4px solid #00d4ff;
+padding-left:10px;
+}
+
+.pagina h1:hover,
+#tituloSub:hover{
+transform:scale(1.05);
+transition:0.3s;
+}
+
+@media (max-width:768px){
+.titulo{font-size:clamp(2.5em, 8vw, 4em);}
+}
+
+.pagina h1:not(.titulo){
+font-size:3.2em;
+font-weight:700;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#00d4ff;
+
+text-shadow:0 0 10px rgba(0,212,255,0.6);
+margin-bottom:20px;
+position:relative;
+}
+
+.pagina h1::after{
+content:"";
+display:block;
+width:60px;
+height:3px;
+background:#00d4ff;
+margin:8px auto;
+border-radius:5px;
+}
+
+.titulo{
+font-size:clamp(2.5rem, 7vw, 5.5rem);
+font-weight:800;
+letter-spacing:clamp(1px, 0.4vw, 4px);
+text-transform:uppercase;
+
+background:linear-gradient(90deg,#00d4ff,#00ffcc,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 15px rgba(0,212,255,0.8),
+0 0 30px rgba(0,212,255,0.6);
+
+line-height:1.1;
+margin-top:clamp(20px,5vh,40px);
+
+text-align:center;
+max-width:90%; 
+}
+
+
+.titulo::after{
+content:"";
+display:block;
+width:200px;
+height:10px;
+background:#00d4ff;
+margin:15px auto;
+border-radius:10px;
+}
+
+@keyframes aparecer{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.cards{
+display:flex;
+gap:40px; 
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.card{
+background:rgba(0,0,0,0.6);
+padding:25px;
+border-radius:20px;
+
+width:350px;       
+max-width:90vw;    
+
+backdrop-filter: blur(8px);
+overflow:hidden;
+}
+
+.card h3{
+font-size:1.4em;
+margin:10px 0;
+color:#00d4ff;
+
+text-shadow:0 0 8px rgba(0,212,255,0.7);
+
+letter-spacing:1px;
+text-transform:uppercase;
+}
+
+.card h3::after{
+content:"";
+display:block;
+width:40px;
+height:2px;
+background:#00ffcc;
+margin:6px auto;
+border-radius:5px;
+}
+
+.btn{
+margin-top:10px;
+padding:10px 15px;
+
+background:#00d4ff;
+border:none;
+border-radius:10px;
+
+font-weight:bold;
+cursor:pointer;
+
+transition:0.3s;
+color:black;
+}
+
+.btn:hover{
+background:#00ffcc;
+transform:scale(1.05);
+box-shadow:0 0 10px #00d4ff;
+}
+
+.btnVolver{
+position:absolute; top:20px; left:20px;
+background:#00d4ff; color:black;
+font-weight:bold; padding:10px 15px;
+border-radius:10px; cursor:pointer; border:none;
+}
+
+
+.contenedorMomento{
+display:flex; gap:40px;
+max-width:1100px; margin-top:20px;
+flex-wrap:wrap;
+}
+.columna{ flex:1; min-width:300px; text-align:left; }
+
+.bloque{
+background:rgba(0,0,0,0.55);
+padding:25px;
+border-radius:20px;
+margin-bottom:25px;
+backdrop-filter:blur(10px);
+line-height:1.7;
+font-size:1.05em;
+}
+
+.formula{ font-size:1.5em; text-align:center; color:#00d4ff; }
+
+.imgMomento{ width:100%; border-radius:15px; }
+
+
+
+.timeline{
+position:relative;
+max-width:900px;
+margin:30px auto;
+
+
+padding:20px;
+border-radius:20px;
+background:rgba(255,255,255,0.02);
+border:1px solid rgba(0,212,255,0.15);
+box-shadow:0 0 30px rgba(0,212,255,0.1);
+}
+
+.timeline::after{
+content:'';
+position:absolute;
+width:4px;
+background:linear-gradient(#00d4ff,#00ffcc);
+top:0;
+bottom:0;
+left:50%;
+margin-left:-2px;
+
+box-shadow:0 0 15px #00d4ff, 0 0 30px #00d4ff;
+
+animation:lineaGlow 2s infinite alternate;
+}
+
+@keyframes lineaGlow{
+from{opacity:0.6;}
+to{opacity:1;}
+}
+
+.evento{
+padding:15px 30px;
+position:relative;
+width:48%;
+}
+
+.evento::after{
+content:'';
+position:absolute;
+width:20px;
+height:20px;
+right:-10px;
+background:#00ffcc;
+border:3px solid #00d4ff;
+top:30px;
+border-radius:50%;
+z-index:1;
+
+box-shadow:
+0 0 10px #00ffcc,
+0 0 20px #00d4ff;
+}
+
+.evento:hover .contenidoEvento{
+transform:scale(1.04);
+box-shadow:0 0 25px rgba(0,212,255,0.4);
+}
+
+.izquierda{ left:0; }
+.derecha{ left:50%; }
+
+.derecha::after{
+left:-10px;
+}
+
+.contenidoEvento{
+background:rgba(0,0,0,0.75);
+padding:18px;
+border-radius:15px;
+backdrop-filter:blur(10px);
+
+opacity:0;
+transform:translateY(40px);
+transition:all 0.6s ease;
+
+
+border:1px solid rgba(0,212,255,0.25);
+box-shadow:0 0 10px rgba(0,212,255,0.2);
+}
+
+.contenidoEvento.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.contenidoEvento:hover{
+transform:scale(1.04);
+box-shadow:
+0 0 15px rgba(0,212,255,0.4),
+0 0 30px rgba(0,212,255,0.3);
+border-color:#00d4ff;
+}
+
+.contenidoEvento img{
+width:100%;
+height:auto;
+max-height:200px;
+object-fit:contain;
+border-radius:10px;
+margin:10px 0;
+}
+
+.contenidoEvento img:hover{
+filter:brightness(1.1);
+transform:scale(1.03);
+}
+
+.contenidoEvento{
+position:relative;
+overflow:hidden;
+}
+
+.contenidoEvento::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:4px;
+height:100%;
+background:linear-gradient(#00d4ff,#00ffcc);
+box-shadow:0 0 10px #00d4ff;
+}
+
+.contenidoEvento h3{
+color:#00d4ff;
+margin-bottom:5px;
+}
+
+.contenidoEvento p{
+margin:8px 0;
+}
+
+.formula{
+margin-top:10px;
+font-weight:bold;
+text-shadow:0 0 10px #00d4ff;
+}
+
+
+
+@media screen and (max-width:768px){
+
+.timeline::after{
+left:20px;
+}
+
+.evento{
+width:100%;
+padding-left:60px;
+padding-right:20px;
+}
+
+.evento::after{
+left:10px;
+}
+
+.derecha{
+left:0;
+}
+
+}
+
+.videoBox{
+position:relative;
+cursor:pointer;
+border-radius:15px;
+overflow:hidden;
+}
+
+.videoBox{
+position:relative;
+cursor:pointer;
+border-radius:15px;
+overflow:hidden;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.videoBox img{
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+}
+
+.videoBox:hover img{
+filter:brightness(0.7);
+}
+
+.play{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:40px;
+color:white;
+background:rgba(0,0,0,0.5);
+border-radius:50%;
+padding:10px 18px;
+}
+
+.subBase{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+
+overflow-y:auto;
+padding:100px 40px 40px 40px;
+
+z-index:9999;
+}
+
+#subRevista{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+overflow-y:auto;
+display:none;
+justify-content:flex-start;
+align-items:center;
+flex-direction:column;
+padding:100px 40px 40px 40px;
+z-index:9999;
+}
+
+#contenidoSub{
+width:100%;
+max-width:1200px;
+}
+
+nav h3{
+font-size:24px; 
+font-weight:800;
+letter-spacing:1px;
+}
+
+#subRevista.ej_escritos,
+#subRevista.ej_video,
+#subRevista.ej_crucigrama{
+background: linear-gradient(135deg, #1a1f2a, #2a344f);
+}
+
+
+.contenedor{
+display:flex;
+gap:30px;
+
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(12px);
+
+padding:30px;
+border-radius:20px;
+
+max-width:95vw;
+max-height:90vh;
+
+overflow:auto;
+
+box-shadow:0 0 25px rgba(0,212,255,0.15);
+border:1px solid rgba(0,212,255,0.2);
+}
+
+.ladoIzquierdo{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.tablero{
+display:grid;
+grid-template-columns: repeat(14, 42px);
+grid-auto-rows:42px;
+gap:6px;
+}
+
+.card p{
+font-size:0.95em;
+color:#ccc;
+margin:10px 0;
+}
+
+.celda{
+width:40px;
+height:40px;
+border-radius:10px;
+overflow:hidden;
+
+border:1px solid rgba(0,212,255,0.25);
+box-shadow:0 0 8px rgba(0,212,255,0.2);
+transition:0.2s;
+}
+
+.celda:hover{
+transform:scale(1.05);
+box-shadow:0 0 12px rgba(0,212,255,0.5);
+}
+
+
+.celda input{
+width:100%;
+height:100%;
+border:none;
+text-align:center;
+
+font-size:18px;
+font-weight:bold;
+text-transform:uppercase;
+
+outline:none;
+
+background:rgba(255,255,255,0.05);
+color:#00d4ff;
+
+transition:0.2s;
+}
+
+.celda input:focus{
+background:rgba(0,212,255,0.25);
+box-shadow:0 0 12px #00d4ff inset;
+transform:scale(1.08);
+}
+
+
+.negra{
+background:rgba(0,0,0,0.9);
+border:1px solid rgba(0,212,255,0.2);
+}
+
+.correcto{
+background:#00ffcc !important;
+color:black !important;
+box-shadow:0 0 10px #00ffcc;
+}
+
+.incorrecto{
+background:#ff4d6d !important;
+color:white !important;
+box-shadow:0 0 10px #ff4d6d;
+}
+
+.pistas{
+width:320px;
+overflow-y:auto;
+
+color:#ddd;
+font-size:14px;
+line-height:1.6;
+
+background:rgba(0,0,0,0.5);
+padding:20px;
+border-radius:15px;
+
+border:1px solid rgba(0,212,255,0.2);
+}
+
+.cajaAyuda{
+margin-top:10px;
+padding:15px;
+
+background:rgba(0,0,0,0.7);
+border-radius:15px;
+
+display:none;
+width:100%;
+
+border:1px solid rgba(0,212,255,0.2);
+color:#00ffcc;
+}
+
+.cajaAyuda textarea{
+width:100%;
+height:100px;
+
+background:rgba(0,0,0,0.8);
+color:#00ffcc;
+
+border:1px solid rgba(0,212,255,0.3);
+border-radius:10px;
+
+padding:10px;
+
+font-family:'Poppins',sans-serif;
+font-size:14px;
+
+resize:none;
+outline:none;
+
+box-shadow:0 0 10px rgba(0,212,255,0.2) inset;
+}
+
+#inicio{background:linear-gradient(135deg,#000,#0a0f1f);}
+#teoria{background:linear-gradient(135deg,#0b0f1a,#002233);}
+#historia{background:linear-gradient(135deg,#14121f,#2a223f);}
+#formulas{background:linear-gradient(135deg,#0f1a1a,#1a4f4f);}
+#simulaciones{background:linear-gradient(135deg,#0f1a2a,#1a2f4f);}
+#ejercicios{background:linear-gradient(135deg,#1a1f2a,#2a344f);}
+#recursos{background:linear-gradient(135deg,#0f0f1a,#2a2a4f);}
+#descargas{background:linear-gradient(135deg,#1a0f12,#3a1f24);}
+#creditos{background:linear-gradient(135deg,#111,#222);}
+
+#subRevista.momento{ background:linear-gradient(135deg,#001a2a,#002f4f); }
+#subRevista.impulso{ background:linear-gradient(135deg,#1a0f1f,#3a1f3f); }
+#subRevista.choques{ background: linear-gradient(135deg, #0a1a2f, #1a3f5f);
+}
+#subRevista.datos{
+background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+#subRevista.elastico{
+background: linear-gradient(135deg, #001f2f, #004f6f);
+}
+
+#subRevista.inelastico{
+background: linear-gradient(135deg, #2a0f1a, #5f1a2a);
+}
+#subRevista.historiaSub{ background:linear-gradient(135deg,#14121f,#2a223f); }
+#subRevista.formulasSub{ background:linear-gradient(135deg,#0f1a1a,#1a4f4f); }
+#subRevista.sim_videos{ 
+background:linear-gradient(135deg,#0f1a2a,#1a2f4f); 
+}
+
+#subRevista.sim_juego{ 
+background:linear-gradient(135deg,#0f1a2a,#1a2f4f); 
+}
+#subRevista.ejercicioSub{ background:linear-gradient(135deg,#1a1f2a,#2a344f); }
+#subRevista.recursoSub{ background:linear-gradient(135deg,#0f0f1a,#2a2a4f); }
+#subRevista.descargaSub{ background:linear-gradient(135deg,#1a0f12,#3a1f24); }
+#subRevista.creditoSub{ background:#111; }
+
+.modal{
+display:none;
+position:fixed;
+z-index:10000;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+
+justify-content:center;
+align-items:center;
+}
+
+.modalContenido{
+width:90%;
+max-width:1000px;
+aspect-ratio:16/9;
+}
+
+.modalContenido iframe{
+width:100%;
+height:100%;
+border:none;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,212,255,0.4);
+}
+
+.cerrar{
+position:absolute;
+top:20px;
+right:30px;
+font-size:35px;
+cursor:pointer;
+color:white;
+transition:0.3s;
+}
+
+.cerrar:hover{
+color:#00d4ff;
+transform:scale(1.2);
+}
+
+.respuesta{
+display:none;
+margin-top:10px;
+padding:10px;
+background:rgba(0,0,0,0.7);
+border-radius:10px;
+border:1px solid rgba(0,212,255,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h3>Física</h3>
+<ul>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#teoria">Teoría</a></li>
+<li><a href="#historia">Historia</a></li>
+<li><a href="#formulas">Fórmulas</a></li>
+<li><a href="#simulaciones">Simulaciones</a></li>
+<li><a href="#ejercicios">Ejercicios</a></li>
+<li><a href="#descargas">Descargas</a></li>
+<li><a href="#creditos">Créditos</a></li>
+</ul>
+</nav>
+</header>
+
+
+<section class="pagina" id="inicio">
+<h1 class="titulo">Física y el Universo en Movimiento</h1>
+<img src="assets/imagenes/inicio.png" style="width:250px;">
+</section>
+
+<section class="pagina" id="teoria">
+<h1>Teoría</h1>
+<div class="cards">
+<div class="card">
+<img src="assets/imagenes/movilineal.png" class="imgCard">
+<h3>Momento Lineal</h3>
+<button class="btn" onclick="abrirSub('momento')">Ver más</button>
+</div>
+<div class="card">
+<img src="assets/imagenes/imp.png" class="imgCard">
+<h3>Impulso</h3>
+<button class="btn" onclick="abrirSub('impulso')">Ver más</button>
+</div>
+<div class="card">
+<img src="assets/imagenes/choque.png" class="imgCard">
+<h3>Choques</h3>
+<button class="btn" onclick="abrirSub('choques')">Ver más</button>
+</div>
+<div class="card">
+<img src="assets/imagenes/datos.png" class="imgCard">
+<h3>Datos Relevantes</h3>
+<button class="btn" onclick="abrirSub('datos')">Ver más</button>
+</div>
+<div class="card">
+<img src="assets/imagenes/choque_inelastico.png" class="imgCard">
+<h3>Choque Elástico</h3>
+<button class="btn" onclick="abrirSub('elastico')">Ver más</button>
+</div>
+
+<div class="card">
+<img src="assets/gifs/choque_elastico.gif" class="imgCard">
+<h3>Choque Inelástico</h3>
+<button class="btn" onclick="abrirSub('inelastico')">Ver más</button>
+</div>
+</div>
+</section>
+
+<section class="pagina" id="historia">
+<h1>Historia</h1>
+<div class="cards">
+<div class="card">
+<img src="assets/gifs/histo.gif" class="imgCard">
+<h3>Linea del tiempo</h3>
+<button class="btn" onclick="abrirSub('historiaSub')">Ver</button>
+</section>
+
+<section class="pagina" id="formulas">
+<h1>Fórmulas</h1>
+<button class="btn" onclick="abrirSub('formulasSub')">Ver</button>
+</section>
+
+<section class="pagina" id="simulaciones">
+<h1>Simulaciones</h1>
+
+<div class="cards">
+
+<div class="card">
+<img src="assets/imagenes/yt.png" class="imgCard">
+<h3>Simulaciones en Video</h3>
+<p>Accede a las 5 simulaciones en formato video</p>
+<button class="btn" onclick="abrirSub('sim_videos')">Entrar</button>
+</div>
+
+<div class="card">
+<img src="assets/imagenes/roblox.png" class="imgCard">
+<h3>Simulador Interactivo</h3>
+<p>Explora un simulador donde puedes crear tus propios casos</p>
+<button class="btn" onclick="abrirSub('sim_juego')">Entrar</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="pagina" id="ejercicios">
+<h1>Ejercicios</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>Ejercicios Escritos</h3>
+<button class="btn" onclick="abrirSub('ej_escritos')">Entrar</button>
+</div>
+
+<div class="card">
+<h3>Resolución en Video</h3>
+<button class="btn" onclick="abrirSub('ej_video')">Entrar</button>
+</div>
+
+<div class="card">
+<h3>Crucigrama</h3>
+<button class="btn" onclick="abrirSub('ej_crucigrama')">Entrar</button>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="pagina" id="descargas">
+<h1>Descargas</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>Revista Descargable</h3>
+<p>Accede a la revista completa</p>
+<button class="btn" onclick="window.open('https://heyzine.com/flip-book/f6d9a77343.html')">
+Ver revista
+</button>
+</div>
+
+<div class="card">
+<h3>Formulario Descargable</h3>
+<p>Formulario completo con todas las fórmulas del tema</p>
+<a href="assets/pdf/Formulario FisicaII.pdf" class="btn" download>
+Descargar
+</a>
+</div>
+
+</div>
+
+</section>
+<section class="pagina" id="creditos">
+<h1>Créditos</h1>
+<button class="btn" onclick="abrirSub('creditoSub')">Ver</button>
+</section>
+
+
+<div id="subRevista">
+<button class="btnVolver" onclick="cerrarSub()">⬅ Volver</button>
+<h1 id="tituloSub"></h1>
+<div id="contenidoSub"></div>
+</div>
+
+<script>
+let grid = [];
+let direccion = "horizontal";
+function abrirSub(tipo){
+document.querySelector("header").style.display="none";
+document.querySelectorAll(".pagina").forEach(p=>{
+p.style.display="none";
+});
+
+let sub=document.getElementById("subRevista");
+sub.style.display="flex";
+sub.className=""; 
+sub.classList.add("subBase");  
+sub.classList.add(tipo);
+
+let titulo="";
+let contenido="";
+if(tipo==="momento"){
+titulo="Momento Lineal";
+
+contenido=`
+<div class="contenedorMomento">
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Definición</h2>
+<p>El momento lineal o cantidad de movimiento de un objeto se define como el producto de su masa
+por su velocidad.Es una magnitud vectorial cuya dirección coincide con la de la
+velocidad, y sus unidades en el SI son kg·m/s.</p>
+</div>
+
+<div class="bloque">
+<p>El momento lineal se expresa mediante la siguiente relación:</p>
+<p class="formula">p = m · v</p>
+<p>Donde p es el momento lineal, m la masa del objeto y v su velocidad.</p>
+</div>
+
+<div class="bloque">
+<p>El principio de conservación del momento lineal afirma
+que, en un sistema aislado (sin fuerzas externas netas), el momento total permanece constante a lo
+largo del tiempo.</p>
+</div>
+
+<div class="bloque">
+<p>En otras palabras, si la resultante de las fuerzas externas sobre un sistema es
+nula, la suma vectorial de los momentos individuales no cambia.
+</p>
+</div>
+
+<div class="bloque">
+<h2>Conservación</h2>
+<p>El principio de conservación del momento lineal se deriva de la tercera ley de Newton y se cumple cuando la fuerza externa neta sobre el sistema es cero.</p>
+</div>
+
+<div class="bloque">
+<p>En un sistema aislado, el momento total se conserva antes y después de una interacción:</p>
+<p class="formula">Σp inicial = Σp final</p>
+<p>Esta conservación solo es válida en sistemas aislados, donde la suma de fuerzas externas es cero.</p>
+</div>
+
+<div class="bloque">
+<p>Para dos cuerpos en interacción:</p>
+<p class="formula">m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'</p>
+</div>
+
+
+</div>
+
+<div class="columna">
+
+    <div class="bloque">
+
+<p>
+Integrando la segunda ley de Newton en el intervalo del choque corto, se
+obtiene que el cambio total de momento de uno es igual al opuesto del cambio del otro, cancelando el
+intercambio interno. Por eso el momento total del conjunto queda invariable
+</p>
+</div>
+
+<div class="bloque">
+<h2>Ejemplo</h2>
+<p>Por ejemplo, como ilustra la tradicional cuna de Newton (péndulo de Newton) en ausencia de fricción,
+cuando una bola choca contra las demás se transmite el momento hasta la bola del extremo opuesto. El
+movimiento resultante conserva perfectamente el momento lineal y la energía cinética</p>
+</div>
+
+<div class="bloque">
+<p> En la figura
+se ve que al lanzar una bola, otra bola equivalente recibe el impulso igual y opuesto, de modo que el
+momento total (la suma vectorial) antes y después del choque es el mismo (idealmente cero en el
+conjunto).</p>
+</div>
+
+<div class="bloque">
+<h2>Péndulo de Newton</h2>
+<br>
+<img src="assets/gifs/cuna.gif">
+</div>
+
+</div>
+
+</div>
+`;
+}
+
+else if(tipo==="impulso"){
+titulo="Impulso";
+
+contenido=`
+<div class="contenedorMomento">
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Definición</h2>
+<p>El impulso es una magnitud física que mide el efecto de una fuerza aplicada sobre un cuerpo durante un intervalo de tiempo. Se define como el producto de la fuerza por el tiempo durante el cual actúa. Es una magnitud vectorial cuya dirección coincide con la de la fuerza aplicada, y sus unidades en el SI son N·s (equivalentes a kg·m/s).</p>
+</div>
+
+<div class="bloque">
+<p>El impulso se expresa mediante la siguiente relación:</p>
+<p class="formula">I = F · Δt</p>
+<p>Esta expresión es válida cuando la fuerza es constante. Si la fuerza varía, el impulso corresponde al área bajo la curva en una gráfica fuerza-tiempo.</p>
+</div>
+
+<div class="bloque">
+<h2>Relación con el momento lineal</h2>
+<p>El impulso está directamente relacionado con el momento lineal, ya que es igual al cambio en el momento de un cuerpo. Esta relación se conoce como el teorema impulso-momento.</p>
+<p class="formula">I = Δp = m·vf − m·vi</p>
+</div>
+
+<div class="bloque">
+<p>Esto significa que una fuerza aplicada durante cierto tiempo puede modificar la velocidad de un objeto, ya sea aumentándola, disminuyéndola o cambiando su dirección.</p>
+</div>
+<div class="bloque">
+<h2>Interpretación</h2>
+<p>El impulso permite entender que no solo importa la intensidad de la fuerza, sino también el tiempo durante el cual actúa. Una fuerza grande aplicada en poco tiempo puede producir el mismo efecto que una fuerza menor aplicada durante más tiempo.</p>
+</div>
+
+</div>
+
+<div class="columna">
+
+
+
+<div class="bloque">
+<h2>Ejemplo</h2>
+<p>Un ejemplo cotidiano ocurre cuando un jugador patea un balón. Al aplicar una fuerza durante un breve intervalo de tiempo, genera un impulso que hace que el balón pase de estar en reposo a moverse con cierta velocidad.</p>
+</div>
+
+<div class="bloque">
+<p>De manera similar, en choques como los del péndulo de Newton, el impulso se transmite entre los cuerpos, permitiendo que el momento lineal total del sistema se conserve.</p>
+</div>
+
+<div class="bloque">
+<h2>Aplicación</h2>
+<p>El concepto de impulso es fundamental en la seguridad, por ejemplo en los airbags de los automóviles. Estos aumentan el tiempo de impacto durante un choque, reduciendo la fuerza que actúa sobre el cuerpo y disminuyendo el riesgo de lesiones.</p>
+</div>
+
+<div class="bloque">
+<h2>Nota</h2>
+<p>El impulso siempre produce un cambio en el momento lineal, incluso si la velocidad final es cero. Esto ocurre porque durante la interacción hubo una variación en el movimiento del objeto.</p>
+</div>
+
+<div class="bloque">
+<h2>Ejemplo numérico</h2>
+<p>Si una fuerza de 10 N actúa durante 2 segundos sobre un objeto:</p>
+<p class="formula">I = 10 · 2 = 20 N·s</p>
+<p>Esto significa que el momento del objeto cambió en 20 kg·m/s.</p>
+</div>
+
+</div>
+
+
+
+</div>
+`;
+}
+else if(tipo==="choques"){
+titulo="Tipos de Choques";
+
+contenido=`
+<div class="contenedorMomento">
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Clasificación de los choques</h2>
+<p>En las colisiones entre cuerpos, el comportamiento del sistema depende de cómo se conserva la energía cinética además del momento lineal.</p>
+</div>
+
+<div class="bloque">
+<h2>Choque elástico</h2>
+<p>En un choque elástico se conservan tanto el momento lineal como la energía cinética total. No hay pérdidas apreciables de energía.</p>
+
+<p class="formula">Σp = constante</p>
+<p class="formula">Ec inicial = Ec final</p>
+
+<p>Ejemplo: bolas de billar o el péndulo de Newton.</p>
+</div>
+
+<div class="bloque">
+<h2>Choque inelástico</h2>
+<p>En este tipo de choque solo se conserva el momento lineal. Parte de la energía cinética se transforma en calor, sonido o deformación.</p>
+
+<p class="formula">Σp inicial = Σp final</p>
+
+<p>La pérdida de energía depende del tipo de materiales y del impacto.</p>
+</div>
+
+<div class="bloque">
+<h2>Choque perfectamente inelástico</h2>
+<p>Es el caso extremo donde los cuerpos quedan unidos después del impacto y se mueven con una sola velocidad.</p>
+
+<p class="formula">v = (m₁v₁ + m₂v₂) / (m₁ + m₂)</p>
+
+<p>Aquí ocurre la máxima pérdida de energía cinética posible.</p>
+</div>
+
+</div>
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Interpretación física</h2>
+<p>La diferencia entre los tipos de choque está en qué tanta energía cinética se conserva. Esto depende de la deformación y de la disipación de energía durante el impacto.</p>
+
+<p>Sin embargo, el momento lineal siempre se conserva si el sistema es aislado.</p>
+</div>
+
+<div class="bloque">
+<h2>Coeficiente de restitución</h2>
+<p>Este valor indica qué tan "elástico" es un choque:</p>
+
+<p class="formula">e = (velocidad de separación) / (velocidad de aproximación)</p>
+
+<p>• e = 1 → choque elástico</p>
+<p>• 0 < e < 1 → choque inelástico</p>
+<p>• e = 0 → perfectamente inelástico</p>
+</div>
+
+<div class="bloque">
+<h2>Ejemplo conceptual</h2>
+<p>Si dos objetos de la misma masa chocan elásticamente, intercambian sus velocidades.</p>
+
+<p>Esto explica fenómenos como el péndulo de Newton, donde el movimiento se transmite entre esferas.</p>
+</div>
+
+<div class="bloque">
+<h2>Caso con fuerzas externas</h2>
+<p>Si existen fuerzas externas importantes (como fricción o gravedad en tiempos largos), el sistema deja de ser aislado y el momento puede cambiar.</p>
+
+<p>En choques muy rápidos estas fuerzas suelen despreciarse, por lo que la conservación del momento sigue siendo válida.</p>
+</div>
+
+</div>
+
+</div>
+`;
+}
+else if(tipo==="datos"){
+titulo="Datos Relevantes";
+
+contenido=`
+<div class="contenedorMomento">
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Choques en una y dos dimensiones</h2>
+
+<p>En una dimensión (1D), los objetos se mueven en la misma línea, lo que simplifica el análisis del momento lineal.</p>
+
+<p>En dos dimensiones (2D), los choques incluyen ángulos, por lo que el momento debe analizarse por componentes:</p>
+
+<p class="formula">Σpₓ = constante</p>
+<p class="formula">Σpᵧ = constante</p>
+
+<p>Esto permite describir trayectorias más complejas después del impacto.</p>
+</div>
+
+<div class="bloque">
+<h2>Relación impulso–choque</h2>
+
+<p>Durante un choque, las fuerzas actúan en intervalos muy cortos de tiempo, generando un impulso.</p>
+
+<p class="formula">I = Δp</p>
+
+<p>Esto significa que el cambio en el momento lineal es consecuencia directa del impulso aplicado.</p>
+
+<p>Aplicaciones reales incluyen airbags, cascos y sistemas de seguridad.</p>
+</div>
+
+<div class="bloque">
+<h2>Ejemplo numérico</h2>
+
+<p>Dos cuerpos chocan en línea recta:</p>
+
+<p>m₁ = 2 kg, v₁ = 4 m/s</p>
+<p>m₂ = 2 kg, v₂ = 0 m/s</p>
+
+<p>Si el choque es perfectamente inelástico:</p>
+
+<p class="formula">v = (m₁v₁ + m₂v₂) / (m₁ + m₂)</p>
+
+<p class="formula">v = 2 m/s</p>
+
+<p>Ambos cuerpos se mueven juntos después del impacto.</p>
+</div>
+
+</div>
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Pérdida de energía cinética</h2>
+
+<p>En choques inelásticos, parte de la energía cinética se transforma en calor, sonido o deformación.</p>
+
+<p class="formula">ΔE = Ec inicial − Ec final</p>
+
+<p>Esta pérdida depende del tipo de materiales y del impacto.</p>
+</div>
+
+<div class="bloque">
+<h2>Importancia en la vida real</h2>
+
+<p>El estudio de los choques permite diseñar sistemas de seguridad como cinturones y airbags.</p>
+
+<p>También es fundamental en ingeniería, deportes y análisis de accidentes.</p>
+</div>
+
+<div class="bloque">
+<h2>Dato clave</h2>
+
+<p>Aunque la energía cinética puede no conservarse, el momento lineal siempre se mantiene constante en sistemas aislados.</p>
+
+<p class="formula">Σp inicial = Σp final</p>
+</div>
+
+<div class="bloque">
+<h2>Sistema aislado</h2>
+
+<p>Un sistema se considera aislado cuando la fuerza externa neta es cero o despreciable.</p>
+
+<p class="formula">ΣF_ext = 0 → Σp = constante</p>
+
+</div>
+
+</div>
+
+</div>
+`;
+}
+
+else if(tipo==="historiaSub"){
+titulo="Desarrollo del Concepto de Energía";
+
+contenido=`
+<div class="timeline">
+
+<div class="evento izquierda">
+<div class="contenidoEvento">
+<h2>🔹 Siglo XVII</h2>
+<h3>Idea inicial de “algo que se conserva”</h3>
+<p><strong>René Descartes (1596–1650)</strong></p>
+<img src="assets/imagenes/rene.png">
+
+<p>Propone que existe una cantidad de movimiento que se conserva en el universo.</p>
+<p>Pensaba que Dios creó una cantidad fija de movimiento.</p>
+<p>Este movimiento no se pierde, solo se transfiere entre objetos al chocar.</p>
+
+<p><strong>Problema:</strong> no consideraba la dirección, por lo que su idea era incompleta 
+(hoy sabemos que el movimiento es una magnitud vectorial: momento lineal).</p>
+</div>
+</div>
+
+<div class="evento derecha">
+<div class="contenidoEvento">
+<h2>🔹 Finales del siglo XVII</h2>
+<h3>Nueva propuesta</h3>
+<p><strong>Gottfried Wilhelm Leibniz (1646–1716)</strong></p>
+<img src="assets/imagenes/gott.png">
+
+<p>Introduce el concepto de <strong>vis viva</strong> (“fuerza viva”).</p>
+<p>Propone que depende de: masa × velocidad².</p>
+<p>Es una idea muy cercana a la energía cinética moderna.</p>
+<p>Explica mejor fenómenos como impactos y deformaciones.</p>
+
+<p><strong>Problema:</strong> no podía explicar a dónde iba esa energía cuando parecía desaparecer.</p>
+</div>
+</div>
+
+<div class="evento izquierda">
+<div class="contenidoEvento">
+<h2>🔹 Siglo XVIII</h2>
+<h3>Teoría del “calórico”</h3>
+<img src="assets/imagenes/calo.png">
+
+<p>Los científicos creían que el calor era una sustancia llamada <strong>calórico</strong>.</p>
+<p>Se pensaba que era un fluido invisible que fluía de lo caliente a lo frío.</p>
+<p>Se creía que podía almacenarse y agotarse.</p>
+
+<p><strong>Hoy sabemos que esta teoría es incorrecta.</strong></p>
+</div>
+</div>
+
+<div class="evento derecha">
+<div class="contenidoEvento">
+<h2>🔹 Finales del siglo XVIII</h2>
+<h3>Ruptura de la teoría del calórico</h3>
+<p><strong>Benjamin Thompson (1753–1814)</strong></p>
+<img src="assets/imagenes/thompson.png">
+
+<p>Observa que al perforar cañones se genera calor sin límite aparente.</p>
+<p>Concluye que el calor no es una sustancia.</p>
+<p>Propone que el calor es resultado del movimiento (fricción).</p>
+
+<p><strong>Punto clave:</strong> introduce la idea de que el movimiento puede transformarse en calor.</p>
+</div>
+</div>
+
+<div class="evento izquierda">
+<div class="contenidoEvento">
+<h2>🔹 Siglo XIX</h2>
+<h3>Relación entre energía y biología</h3>
+<p><strong>Julius Robert Mayer (1814–1878)</strong></p>
+<img src="assets/imagenes/julius.png">
+
+<p>Descubre la relación entre energía química, calor y trabajo mecánico.</p>
+<p>Observa que el cuerpo humano necesita menos energía en climas cálidos.</p>
+<p>Concluye que el calor corporal proviene de reacciones químicas.</p>
+
+<p><strong>💡 Idea clave:</strong> la energía no desaparece, sino que se transforma.</p>
+<p><strong>➤ Base de la Ley de conservación de la energía.</strong></p>
+</div>
+</div>
+
+<div class="evento derecha">
+<div class="contenidoEvento">
+<h2>🔹 1847</h2>
+<h3>Unificación del concepto de energía</h3>
+<p><strong>Hermann von Helmholtz (1821–1894)</strong></p>
+<img src="assets/imagenes/hermann.png">
+
+<p>Unifica todas las ideas anteriores.</p>
+<p>Establece que todas las formas (calor, movimiento, electricidad) son la misma energía.</p>
+
+<p><strong>Principio universal:</strong></p>
+<div class="formula">La energía se conserva</div>
+</div>
+</div>
+
+<div class="evento izquierda">
+<div class="contenidoEvento">
+<h2>🔹 Siglo XIX</h2>
+<h3>Formalización matemática (Termodinámica)</h3>
+<p><strong>Rudolf Clausius y William Thomson</strong></p>
+<img src="assets/imagenes/clau.png">
+<p>Desarrollan la Primera Ley de la Termodinámica:</p>
+
+<div class="formula">ΔU = Q − W</div>
+
+<p><strong>Significado:</strong></p>
+<p>ΔU → Cambio de energía interna</p>
+<p>Q → Calor que entra al sistema</p>
+<p>W → Trabajo que realiza el sistema</p>
+
+<p><strong>Interpretación:</strong> La energía total se mantiene, pero cambia de forma.</p>
+</div>
+</div>
+
+<div class="evento derecha">
+<div class="contenidoEvento">
+<h2>🔹 Ejemplo</h2>
+
+<p>Imagina una olla con agua:</p>
+
+<p>• Le aplicas calor → entra energía (Q)</p>
+<p>• El agua se calienta y se evapora</p>
+<p>• El vapor empuja el aire → realiza trabajo (W)</p>
+<p>• Parte de la energía se queda dentro, parte se transforma</p>
+
+<p><strong>Esto demuestra que la energía no desaparece, solo cambia de forma.</strong></p>
+</div>
+</div>
+
+<div class="evento izquierda">
+<div class="contenidoEvento">
+<h2>Conclusión</h2>
+
+<p>Antes del siglo XIX, los científicos sabían que “algo” se conservaba, pero no sabían qué era.</p>
+
+<p>Con el tiempo:</p>
+
+<p><strong>Movimiento → vis viva → calor → transformación de energía</strong></p>
+
+<p>Finalmente se entendió que todas son formas de la misma energía.</p>
+
+<div class="formula">Ley de la conservación de la energía</div>
+</div>
+</div>
+
+</div>
+`;
+}
+
+else if(tipo==="elastico"){
+titulo="Choque Elástico";
+
+contenido=`
+<div class="contenedorMomento">
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Definición</h2>
+
+<p>En un choque elástico se conservan tanto el momento lineal como la energía cinética total.</p>
+
+<p>En condiciones ideales no hay pérdida de energía cinética, aunque en la realidad pueden existir pequeñas pérdidas en forma de calor o sonido.</p>
+</div>
+
+<div class="bloque">
+<h2>Conservación</h2>
+
+<p class="formula">Σp = constante</p>
+<p class="formula">Ec inicial = Ec final</p>
+
+<p>Esto implica que toda la energía se transfiere entre los cuerpos sin disiparse.</p>
+</div>
+
+<div class="bloque">
+<h2>Interpretación física</h2>
+
+<p>Durante el choque, los cuerpos pueden deformarse ligeramente, pero recuperan su forma original.</p>
+
+<p>Las fuerzas internas actúan como "resortes", devolviendo la energía almacenada.</p>
+</div>
+
+<div class="bloque">
+<h2>Coeficiente de restitución</h2>
+
+<p class="formula">e = 1</p>
+
+<p>Indica que la velocidad relativa de separación es igual a la de aproximación.</p>
+</div>
+
+</div>
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Ejemplo</h2>
+<img src="assets/gifs/cuna.gif">
+<p>En el péndulo de Newton, el movimiento se transmite de una esfera a otra conservando energía y momento.</p>
+</div>
+
+<div class="bloque">
+<h2>Característica clave</h2>
+
+<p>Los objetos prácticamente no sufren deformación permanente.</p>
+
+<p>La energía mecánica total permanece constante.</p>
+</div>
+
+<div class="bloque">
+<h2>Caso especial</h2>
+
+<p>Si dos cuerpos tienen la misma masa, intercambian sus velocidades después del choque.</p>
+
+<p class="formula">v₁' = v₂ &nbsp;&nbsp;&nbsp; v₂' = v₁</p>
+<p>Si dos cuerpos tienen la misma masa y el choque es elástico:</p>
+</div>
+
+<div class="bloque">
+<h2>Ejemplos reales</h2>
+
+<p>• Bolas de billar</p>
+<p>• Moléculas en gases ideales</p>
+<p>• Péndulo de Newton</p>
+</div>
+
+</div>
+
+</div>
+`;
+}
+
+else if(tipo==="inelastico"){
+titulo="Choque Inelástico";
+
+contenido=`
+<div class="contenedorMomento">
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Definición</h2>
+
+<p>En un choque inelástico solo se conserva el momento lineal.</p>
+
+<p>Parte de la energía cinética se transforma en calor, sonido o deformación.</p>
+</div>
+
+<div class="bloque">
+<h2>Conservación</h2>
+
+<p class="formula">Σp inicial = Σp final</p>
+
+<p>La energía cinética disminuye después del impacto.</p>
+</div>
+
+<div class="bloque">
+<h2>Interpretación física</h2>
+
+<p>Durante el choque, los cuerpos se deforman y esa deformación absorbe energía.</p>
+
+<p>Esta energía no se pierde, sino que se transforma en otras formas.</p>
+</div>
+
+<div class="bloque">
+<h2>Coeficiente de restitución</h2>
+
+<p class="formula">0 &lt; e &lt; 1</p>
+
+<p>Indica que la velocidad de separación es menor que la de aproximación.</p>
+</div>
+
+</div>
+
+<div class="columna">
+
+<div class="bloque">
+<h2>Ejemplo</h2>
+<img src="assets/gifs/choque_elastico.gif" class="imgCard">
+<p>Un choque de autos donde los cuerpos se deforman y la energía se disipa.</p>
+</div>
+
+<div class="bloque">
+<h2>Caso extremo</h2>
+
+<p>En el choque perfectamente inelástico, los cuerpos quedan unidos tras el impacto.</p>
+
+<p class="formula">v_f = (m₁v₁ + m₂v₂) / (m₁ + m₂)</p>
+</div>
+
+<div class="bloque">
+<h2>Característica clave</h2>
+
+<p>Existe deformación permanente en los cuerpos.</p>
+
+<p>Se pierde la máxima cantidad de energía cinética posible.</p>
+</div>
+
+<div class="bloque">
+<h2>Ejemplos reales</h2>
+
+<p>• Choques de automóviles</p>
+<p>• Plastilina impactando</p>
+<p>• Colisiones con deformación</p>
+</div>
+
+</div>
+
+</div>
+`;
+}
+
+else if(tipo==="formulasSub"){
+titulo="Formulario Completo";
+
+contenido=`
+
+<div class="cards" style="gap:25px; justify-content:center;">
+
+
+<div class="card">
+<h3>Momento Lineal</h3>
+<p class="formula">p = m · v</p>
+
+<p><b>p</b>: momento lineal (kg·m/s)</p>
+<p><b>m</b>: masa (kg)</p>
+<p><b>v</b>: velocidad (m/s)</p>
+
+<p><b>Condición:</b> válida siempre (vectorial)</p>
+<p><b>Dirección:</b> misma que la velocidad</p>
+</div>
+
+
+<div class="card">
+<h3>Conservación del Momento</h3>
+<p class="formula">Σp inicial = Σp final</p>
+
+<p><b>Condición:</b> sistema aislado</p>
+<p><b>Requisito:</b> ΣF_ext = 0</p>
+
+<p><b>Casos:</b> choques y explosiones</p>
+</div>
+
+
+<div class="card">
+<h3>Ley de Newton (general)</h3>
+<p class="formula">F = dp/dt</p>
+
+<p><b>F</b>: fuerza (N)</p>
+
+<p><b>Condición:</b> válida siempre</p>
+
+<p><b>Caso especial:</b></p>
+<p class="formula">F = m · a</p>
+<p>Solo si la masa es constante</p>
+</div>
+
+
+<div class="card">
+<h3>Impulso</h3>
+<p class="formula">I = F · Δt</p>
+
+<p><b>I</b>: impulso (N·s)</p>
+<p><b>F</b>: fuerza (N)</p>
+<p><b>Δt</b>: tiempo (s)</p>
+
+<p><b>Condición:</b> fuerza constante</p>
+
+<p><b>Si F varía:</b></p>
+<p class="formula">I = ∫F dt</p>
+</div>
+
+
+<div class="card">
+<h3>Teorema Impulso-Momento</h3>
+<p class="formula">I = Δp</p>
+
+<p><b>Condición:</b> cualquier sistema</p>
+
+<p><b>Expansión:</b></p>
+<p class="formula">I = m·v_f − m·v_i</p>
+</div>
+
+
+<div class="card">
+<h3>Energía Cinética</h3>
+<p class="formula">Ec = ½ m v²</p>
+
+<p><b>m:</b> masa (kg)</p>
+<p><b>v:</b> velocidad (m/s)</p>
+
+<p><b>Condición:</b> movimiento clásico</p>
+</div>
+
+
+<div class="card">
+<h3>Choque Elástico</h3>
+
+<p class="formula">Σp = constante</p>
+<p class="formula">Ec inicial = Ec final</p>
+
+<p><b>Condición:</b> sin pérdida de energía</p>
+
+<p><b>Relación:</b></p>
+<p class="formula">v₁ - v₂ = -(v₁' - v₂')</p>
+</div>
+
+
+<div class="card">
+<h3>Choque Inelástico</h3>
+<p class="formula">Σp inicial = Σp final</p>
+
+<p><b>Condición:</b> hay pérdida de energía</p>
+
+<p><b>Pérdida:</b></p>
+<p class="formula">ΔE = Ec_i − Ec_f</p>
+</div>
+
+
+<div class="card">
+<h3>Choque Perfectamente Inelástico</h3>
+<p class="formula">v_f = (m₁v₁ + m₂v₂) / (m₁ + m₂)</p>
+
+<p><b>Condición:</b> los cuerpos se unen</p>
+<p><b>Pérdida:</b> máxima energía cinética</p>
+</div>
+
+
+<div class="card">
+<h3>Coeficiente de Restitución</h3>
+<p class="formula">e = (v₂' − v₁') / (v₁ − v₂)</p>
+
+<p><b>Casos:</b></p>
+<p>e = 1 → elástico</p>
+<p>0 &lt; e &lt; 1 → inelástico</p>
+<p>e = 0 → perfectamente inelástico</p>
+</div>
+
+
+<div class="card">
+<h3>Momento en 2D</h3>
+
+<p class="formula">Σpₓ = constante</p>
+<p class="formula">Σpᵧ = constante</p>
+
+<p><b>Condición:</b> movimiento en plano</p>
+</div>
+
+
+<div class="card">
+<h3>Centro de Masa</h3>
+
+<p class="formula">x_cm = (Σ m·x) / Σm</p>
+<p class="formula">v_cm = (Σ m·v) / Σm</p>
+
+<p><b>Condición:</b> sistema de partículas</p>
+</div>
+
+`;
+
+}
+
+else if(tipo==="sim_videos"){
+titulo="Simulaciones";
+
+contenido=`
+
+<div class="cards">
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1MfhHNc2whrw1hPpMaA5f2nDI62X9D4R0')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Simulación 1</h3>
+<p>Da click para ver la "simulación" o representación del ejercicio No.1 en roblox</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1wfo8OKe6Mwf9C9HdjHGXAF-qYcQ4aRQL')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Simulación 2</h3>
+<p>Da click para ver la "simulación" o representación del ejercicio No.2 en roblox</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1O4H8HYq0X-SQB5PaI4GKNJBlts4HUcgg')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Simulación 3</h3>
+<p>Da click para ver la "simulación" o representación del ejercicio No.3 en roblox</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1oIpVnhJS4YxV-srYvLgqV5qODboIIbSr')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Simulación 4</h3>
+<p>Da click para ver la "simulación" o representación del ejercicio No.4 en roblox</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1fevrmcfB2EvRkdmupk0n2cVJrUFwF9DB')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Simulación 5</h3>
+<p>Da click para ver la "simulación" o representación del ejercicio No.5 en roblox</p>
+</div>
+
+</div>
+
+`;
+}
+
+else if(tipo==="sim_juego"){
+titulo="Simulador Interactivo";
+
+contenido=`
+
+<div class="cards">
+
+<div class="card">
+<img src="assets/imagenes/roblox.png" class="imgCard">
+
+<h3>Simulador en Roblox</h3>
+
+<p>
+El juego fue totalmente diseñado por el integrante Joshua, tanto mapa como mecanicas de movimiento,<br>
+dichas están basadas en los problemas propuestos por el integrante Edwin.<br><br>
+Al ingresar al juego se debe esperar de 2 a 3 min para que carguen las mecanicas del juego.<br>
+<h4>Cabe recalcar que el juego solo es para computadora.</h4>
+</p>
+
+<p>
+Para ingresar a los carros se necesita tocar el bloque negro que esta enmedio de los mismos.<br>
+( los carros amarillos hacen explotar a los npc y jugadores, ademas de que pueden matarte y sacarte volando si chocas a una velocidad de 80 a 100 )<br><br>
+
+Los carros rojos solo atropellan gente<br>
+Los carros azules solo sirven para explorar el mapa
+
+</p>
+
+<button class="btn" onclick="window.open('https://www.roblox.com/share?code=96467223ff10704a9c307d7527966029&type=ExperienceDetails&stamp=1777929581281')"">
+Ir al simulador
+</button>
+
+</div>
+
+</div>
+
+`;
+}
+
+else if(tipo==="ej_escritos"){
+titulo="Ejercicios Escritos";
+
+contenido=`
+
+<div class="cards">
+
+<div class="card">
+<h3>Ejercicio 1</h3>
+<p>Una bola de masa 0.125kg se mueve con una velocidad de 2m/s. La bola golpea a otra de masa de 1kg, que inicialmente, está en reposo.<br></p>
+<p>Después del choque, la primera bola retrocede con una velocidad de 1.5 m/s. <br>Calcular la velocidad de la segunda masa.</p>
+<button class="btn" onclick="toggleRespuesta(this)">Ver respuesta</button>
+<div class="respuesta">
+<p class="formula">La velocidad de la masa 2 es de 0.44m/s</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Ejercicio 2</h3>
+<p>Un coche de 800kg marcha a 20m/s cuando choca frontalmente con otro coche de 1000kg que circulaba a 30m/s.<br></p>
+<p>Si después de la colisión ambos vehículos quedan unidos, determinar la velocidad con la que se moverá el conjunto resultante de la colisión.</p>
+
+<button class="btn" onclick="toggleRespuesta(this)">Ver respuesta</button>
+<div class="respuesta">
+<p class="formula">La velocidad con la que se moverá es de 7.78m/s</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Ejercicio 3</h3>
+<p>Una persona está en una barca y lanza un paquete de 5kg a una velocidad de 10m/s.<br></p>
+<p>Calcula la velocidad de la barca inmediatamente después de lanzar el paquete suponiendo que estaba en reposo, <br></p>
+<p> sabiendo que la masa de la persona son 50kg y de la barca son 80kg.</p>
+
+<button class="btn" onclick="toggleRespuesta(this)">Ver respuesta</button>
+<div class="respuesta">
+<p class="formula">La velocidad de la barca es de -0.38m/s</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Ejercicio 4</h3>
+<p>Una granada, inicialmente en reposo, explota en tres fragmentos iguales. Uno sale hacia el este a 80m/s, otro hacia el norte a<br></p>
+<p>60m/s. ¿Cuál es la velocidad del tercero?</p>
+<button class="btn" onclick="toggleRespuesta(this)">Ver respuesta</button>
+<div class="respuesta">
+<p class="formula">La velocidad del tercero es de 100m/s</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Ejercicio 5</h3>
+<p>Una pelota de tenis de 100g de masa lleva una rapidez de 20m/s. Al ser golpeada por una raqueta, se mueve en sentido<br></p>
+<p>contario con una rápidez de 40m/s. Calcular</p>
+<p>a)El impulso<br></p>
+<p>b)Si la pelota permanece en contacto con la raqueta 10-2s<br></p>
+<p>¿Cuál es el módulo de la fuerza media del golpe?</p>
+<button class="btn" onclick="toggleRespuesta(this)">Ver respuesta</button>
+<div class="respuesta">
+<p class="formula">a)El impulso es de 6kgm/s<br></p>
+<p class="formula">b)La fuerza es de 600N</p>
+</div>
+</div>
+
+</div>
+
+`;
+}
+
+else if(tipo==="ej_video"){
+titulo="Resolución en Video";
+
+contenido=`
+
+<div class="cards">
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('173zQIHtToUS7eJVKyqM93U7gZaP_Hoin')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Ejercicio 1</h3>
+<p>Da click para reproducir el video explicado del problema</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1hYnQwH7vL7qs8N3xiZM9WDXtc_u7W9-f')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Ejercicio 2</h3>
+<p>Da click para reproducir el video explicado del problema</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('12zRnibyjrwWMnXRqXZOV4k5tcA3GlW8U')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Ejercicio 3</h3>
+<p>Da click para reproducir el video explicado del problema</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1wXNYzG0RZaDkg4g-pXav74XFKEI8us8K')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Ejercicio 4</h3>
+<p>Da click para reproducir el video explicado del problema</p>
+</div>
+
+<div class="card">
+<div class="videoBox" onclick="abrirModal('1AU3TNXm_RBx_SYy-VJCvAytG0ryMrqKH')">
+<img src="assets/imagenes/mini.png">
+<div class="play">▶</div>
+</div>
+<h3>Ejercicio 5</h3>
+<p>Da click para reproducir el video explicado del problema</p>
+</div>
+
+</div>
+`;
+}
+
+else if(tipo==="ej_crucigrama"){
+titulo="Crucigrama";
+
+contenido=`
+<div class="contenedor">
+
+<div class="ladoIzquierdo">
+<div class="tablero" id="tablero"></div>
+
+<button class="btn" onclick="toggleAyuda(this)">
+Ayuda
+</button>
+
+<div class="cajaAyuda" id="cajaAyuda">
+<textarea style="width:100%; height:100px;">
+Horizontales          Verticales
+Rebote                Cohete
+Cantidad              Dirección
+Retroceso             Inercia
+Transferencia         Masa
+Proyección            Movimiento
+</textarea>
+</div>
+</div>
+
+<div class="pistas">
+<h3>HORIZONTALES</h3>
+ <p>1. Es el "¡Boing!" que hace un objeto cuando choca contra una superficie y cambia su dirección de golpe.</p>
+    <p>2. Palabra clave que, junto a "movimiento", define qué tan difícil es detener a un objeto que viaja.</p>
+    <p>3. Es el "empujón" hacia atrás que sientes, por ejemplo, al saltar desde una lancha hacia el muelle.</p>
+    <p>4. El acto de generosidad física donde un objeto le "regala" su movimiento a otro al chocar.</p>
+    <p>5. El efecto de lanzar algo hacia el frente, como cuando un futbolista patea un balón hacia la portería.</p>
+
+<h3>VERTICALES</h3>
+    <p>1. El campeón de la física que logra subir al espacio expulsando gases a toda velocidad hacia el suelo.</p>
+    <p>2. El camino que elige el movimiento. No basta con saber qué tan rápido vas, ¡tienes que saber hacia dónde!</p>
+    <p>3. Es la "terquedad" de las cosas: si están quietas, no se quieren mover, y si están moviéndose, ¡no quieren parar!</p>
+    <p>4. Es la cantidad de "materia" que tiene un objeto.</p>
+    <p>5. Es el estado de cualquier objeto que no se queda quieto y decide cambiar su lugar en el universo.</p>
+
+
+<button class="btn" onclick="verificar()">Comprobar</button>
+</div>
+
+</div>
+`;
+}
+if(tipo==="ej_crucigrama"){
+setTimeout(iniciarCrucigrama, 50);
+}
+
+
+
+
+else if(tipo==="descargaSub"){
+titulo="Descargas";
+contenido=`<div class="bloque">PDF disponible</div>`;
+}
+
+else if(tipo==="creditoSub"){
+titulo="Créditos";
+
+contenido=`
+<div class="cards">
+
+<div class="card">
+<img src="assets/imagenes/edwin.png" class="imgCard">
+<h3>Integrante 1</h3>
+<h4>Corona Cazares Edwin Edmundo</h4>
+<h5>Apodo: Edison Newton Edmundo Einstein</h5>
+<p>Resolución y desarrollo de ejercicios</p>
+<p>Investigador</p>
+<p>Autor de vídeos interactivos</p>
+</div>
+
+<div class="card">
+<img src="assets/imagenes/joshua.png" class="imgCard">
+<h3>Integrante 2</h3>
+<h4>Jarillo Reyes Joshua</h4>
+<h5>Apodo: Gran regente Rossum Torvalds Chochua Zuckerberg</h5>
+<p>Creador de simuladores</p>
+<p>Programación</p>
+<p>Gestor del servidor</p>
+</div>
+
+<div class="card">
+<img src="assets/imagenes/haz.png" class="imgCard">
+<h3>Integrante 3</h3>
+<h4>Ricardo Cruz Angel haziel</h4>
+<h5>Apodo: Pitágoras Euler Euclides Haziel Gauss   </h5>
+<p>Resolución y desarrollo de ejercicios</p>
+<p>Investigador</p>
+</div>
+
+<div class="card">
+<img src="assets/imagenes/quechou.png" class="imgCard">
+<h3>Integrante 4</h3>
+<h4>Rodríguez Morquecho Angel Uriel</h4>
+<h5>Apodo: Lavoiser Ritchie Quecho</h5>
+<p>Programación</p>
+<p>Diseño gráfico</p>
+<p>Organizador y gestor</p>
+<p>Principal enfoque creativo</p>
+</div>
+
+<div class="card">
+<img src="assets/imagenes/colme.png" class="imgCard">
+<h3>Integrante 5</h3>
+<h4>Váldez Colmenero Fernanda Daniela</h4>
+<h5>Apodo: Váldez Washington D'Colmenero</h5>
+<p>Programación</p>
+<p>Diseño gráfico</p>
+<p>Organizador y gestor</p>
+<p>Principal enfoque creativo</p>
+</div>
+
+</div>
+`;
+}
+
+document.getElementById("tituloSub").innerText=titulo;
+document.getElementById("contenidoSub").innerHTML=contenido;
+
+
+setTimeout(()=>{
+activarAnimaciones();
+},100);
+
+}
+
+function cerrarSub(){
+document.querySelector("header").style.display="block";
+let sub=document.getElementById("subRevista");
+sub.style.display="none";
+sub.className="";
+
+document.querySelectorAll(".pagina").forEach(p=>{
+p.style.display="flex";
+});
+}
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+},{threshold:0.2});
+
+function activarAnimaciones(){
+document.querySelectorAll(".contenidoEvento")
+.forEach(el=>observer.observe(el));
+}
+
+function iniciarCrucigrama(){
+
+const mapa = [
+["#","#","#","#","#","C","#","#","#","#","#","M","#","#"],
+["#","#","R","E","B","O","T","E","#","#","#","O","#","#"],
+["#","#","#","#","#","H","#","#","#","#","#","V","#","#"],
+["#","#","#","#","#","E","#","#","M","#","#","I","#","#"],
+["#","#","C","A","N","T","I","D","A","D","#","M","#","#"],
+["#","#","#","#","#","E","#","#","S","I","#","I","#","#"],
+["#","#","I","#","#","#","#","#","A","R","#","E","#","#"],
+["#","#","N","#","#","#","#","#","#","E","#","N","#","#"],
+["#","#","E","#","#","#","#","#","#","C","#","T","#","#"],
+["#","#","R","P","R","O","Y","E","C","C","I","O","N","#"],
+["#","#","C","#","#","#","#","#","#","I","#","#","#","#"],
+["#","#","I","#","#","R","E","T","R","O","C","E","S","O"],
+["T","R","A","N","S","F","E","R","E","N","C","I","A","#"],
+["#","#","#","#","#","#","#","#","#","#","#","#","#","#"]
+];
+
+grid = [];
+direccion = "horizontal";
+const tablero = document.getElementById("tablero");
+
+tablero.innerHTML=""; // limpiar
+
+for(let i=0;i<mapa.length;i++){
+grid[i]=[];
+for(let j=0;j<mapa[i].length;j++){
+
+if(mapa[i][j] === "#"){
+let div=document.createElement("div");
+div.classList.add("celda","negra");
+tablero.appendChild(div);
+grid[i][j]=null;
+}else{
+let div=document.createElement("div");
+div.classList.add("celda");
+
+let input=document.createElement("input");
+input.maxLength=1;
+input.dataset.letra = mapa[i][j];
+
+input.addEventListener("focus", ()=>{
+direccion = detectarDireccion(i,j);
+});
+
+input.addEventListener("input", ()=>{
+input.value=input.value.toUpperCase();
+mover(i,j,1);
+});
+
+input.addEventListener("keydown",(e)=>{
+if(e.key==="Backspace"){
+mover(i,j,-1);
+}
+});
+
+div.appendChild(input);
+tablero.appendChild(div);
+grid[i][j]=input;
+}
+}
+}
+}
+
+function detectarDireccion(f,c){
+if(grid[f] && grid[f][c+1]) return "horizontal";
+if(grid[f+1] && grid[f+1][c]) return "vertical";
+return "horizontal";
+}
+
+function mover(f,c,dir){
+let nf=f, nc=c;
+
+if(direccion==="horizontal") nc+=dir;
+else nf+=dir;
+
+if(grid[nf] && grid[nf][nc]){
+grid[nf][nc].focus();
+}
+}
+
+function verificar(){
+for(let i=0;i<grid.length;i++){
+for(let j=0;j<grid[i].length;j++){
+
+let celda = grid[i][j];
+if(!celda) continue;
+
+if(celda.value === celda.dataset.letra){
+celda.classList.add("correcto");
+celda.classList.remove("incorrecto");
+}else{
+celda.classList.add("incorrecto");
+celda.classList.remove("correcto");
+}
+
+}
+}
+}
+
+function mostrarAyuda(){
+document.getElementById("cajaAyuda").style.display="block";
+}
+
+function ocultarAyuda(){
+document.getElementById("cajaAyuda").style.display="none";
+}
+
+function toggleAyuda(btn){
+const caja = document.getElementById("cajaAyuda");
+if(caja.style.display === "block"){
+caja.style.display = "none";
+btn.innerText = "Ayuda";
+}else{
+caja.style.display = "block";
+btn.innerText = "Ocultar";
+}
+}
+
+function cargarVideo(elemento,id){
+elemento.innerHTML = `
+<iframe 
+src="https://drive.google.com/file/d/${id}/preview"
+width="100%" 
+height="200" 
+allow="autoplay">
+</iframe>
+`;
+}
+
+function abrirModal(id){
+const modal = document.getElementById("modalVideo");
+const iframe = document.getElementById("iframeVideo");
+
+iframe.src = `https://drive.google.com/file/d/${id}/preview`;
+modal.style.display = "flex";
+}
+
+function cerrarModal(){
+const modal = document.getElementById("modalVideo");
+const iframe = document.getElementById("iframeVideo");
+
+iframe.src = ""; 
+modal.style.display = "none";
+}
+
+
+document.addEventListener("keydown", function(e){
+if(e.key === "Escape"){
+cerrarModal();
+}
+});
+
+function toggleRespuesta(btn){
+const respuesta = btn.nextElementSibling;
+
+if(respuesta.style.display === "block"){
+respuesta.style.display = "none";
+btn.innerText = "Ver respuesta";
+}else{
+respuesta.style.display = "block";
+btn.innerText = "Ocultar respuesta";
+}
+}
+
+</script>
+<div id="modalVideo" class="modal">
+<span class="cerrar" onclick="cerrarModal()">✖</span>
+
+<div class="modalContenido">
+<iframe id="iframeVideo" src="" allow="autoplay"></iframe>
+</div>
+</div>
+
+</body>
+</html>
